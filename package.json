@@ -1,0 +1,31 @@
+{
+  "name": "mob-eureka-clientjs",
+  "version": "1.0.0",
+  "description": "MobileMed Eureka Client for NodeJS",
+  "main": "index.js",
+  "keywords": [
+    "eureka",
+    "nodejs",
+    "client",
+    "microservices",
+    "feign"
+  ],
+  "repository": "mobilemed-dev/mob-eureka-clientjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MobileMed",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "eureka-client.js",
+    "feign-client.js"
+  ],
+  "dependencies": {
+    "eureka-js-client": "^4.5.0",
+    "resilient": "^0.4.0",
+    "resilient-eureka": "^1.0.2"
+  }
+}
