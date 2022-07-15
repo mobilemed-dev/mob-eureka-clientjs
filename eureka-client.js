@@ -15,7 +15,7 @@ module.exports = class EurekaClient {
         eurekaHost,
         useAws,
         logLevel },
-        options) {
+        options = {}) {
 
         if (!port) {
             throw new Error('Eureka Client: Port is required');
