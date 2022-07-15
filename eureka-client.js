@@ -28,8 +28,8 @@ module.exports = class EurekaClient {
         // Main parameters
         this.port = port;
         this.appName = appName || 'myApp';
-        this.hostName = hostName || 'localhost';
-        this.ipAddress = ipAddress || '127.0.0.1';
+        this.hostName = hostName || useAws ? undefined : 'localhost';
+        this.ipAddress = ipAddress || useAws ? undefined : '127.0.0.1';
         this.eurekaPort = eurekaPort || 8761;
         this.eurekaHost = eurekaHost;
         this.useAws = useAws || false;
@@ -88,9 +88,9 @@ module.exports = class EurekaClient {
                     '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
                     name: 'MyOwn',
                 },
-                healthCheckUrl: this.healthCheckPath ?? `http://${this.ipAddress}:${this.port}/health-check`,
-                statusPageUrl: this.statusPagePath ?? `http://${this.ipAddress}:${this.port}/health-check`,
-                homePageUrl: `http://${this.ipAddress}:${this.port}`,
+                healthCheckUrl: this.healthCheckPath ?? `http://${this.useAws ? '__HOST__' : this.ipAddress}:${this.port}/health-check`,
+                statusPageUrl: this.statusPagePath ?? `http://${this.useAws ? '__HOST__' : this.ipAddress}:${this.port}/health-check`,
+                homePageUrl: `http://${this.useAws ? '__HOST__' : this.ipAddress}:${this.port}`,
                 appGroupName: this.appGroupName,
                 sid: this.sid,
                 securePort: this.securePort,
