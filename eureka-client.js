@@ -28,8 +28,8 @@ module.exports = class EurekaClient {
         // Main parameters
         this.port = port;
         this.appName = appName || 'myApp';
-        this.hostName = hostName || useAws ? undefined : 'localhost';
-        this.ipAddress = ipAddress || useAws ? undefined : '127.0.0.1';
+        this.hostName = hostName || 'localhost';
+        this.ipAddress = ipAddress || '127.0.0.1';
         this.eurekaPort = eurekaPort || 8761;
         this.eurekaHost = eurekaHost;
         this.useAws = useAws || false;

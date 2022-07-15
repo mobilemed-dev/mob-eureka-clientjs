@@ -1,6 +1,6 @@
 {
   "name": "mob-eureka-clientjs",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "MobileMed Eureka Client for NodeJS",
   "main": "index.js",
   "keywords": [
