@@ -17,11 +17,11 @@ module.exports = class EurekaClient {
         logLevel },
         options) {
 
-        if (!options.port) {
+        if (!port) {
             throw new Error('Eureka Client: Port is required');
         }
 
-        if (!options.eurekaHost) {
+        if (!eurekaHost) {
             throw new Error('Eureka Client: Eureka host is required');
         }
 
