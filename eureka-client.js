@@ -27,42 +27,42 @@ module.exports = class EurekaClient {
 
         // Main parameters
         this.port = port;
-        this.appName = appName || 'myApp';
-        this.hostName = hostName || 'localhost';
-        this.ipAddress = ipAddress || '127.0.0.1';
-        this.eurekaPort = eurekaPort || 8761;
+        this.appName = appName ?? 'myApp';
+        this.hostName = hostName ?? 'localhost';
+        this.ipAddress = ipAddress ?? '127.0.0.1';
+        this.eurekaPort = eurekaPort ?? 8761;
         this.eurekaHost = eurekaHost;
-        this.useAws = useAws || false;
-        this.logLevel = logLevel || 'debug';
+        this.useAws = useAws ?? false;
+        this.logLevel = logLevel ?? 'debug';
 
         // Other instance parameters
-        this.appGroupName = options.appGroupName || undefined;
-        this.sid = options.sid || undefined;
-        this.securePort = options.securePort || undefined;
-        this.statusPagePath = options.statusPagePath || null;
-        this.healthCheckPath = options.healthCheckPath || null;
-        this.secureHealthCheckUrl = options.secureHealthCheckUrl || undefined;
-        this.secureVipAddress = options.secureVipAddress || undefined;
-        this.countryId = options.countryId || undefined;
-        this.isCoordinatingDiscoveryServer = options.isCoordinatingDiscoveryServer || false;
-        this.metadata = options.metadata || undefined;
+        this.appGroupName = options.appGroupName ?? undefined;
+        this.sid = options.sid ?? undefined;
+        this.securePort = options.securePort ?? undefined;
+        this.statusPagePath = options.statusPagePath ?? null;
+        this.healthCheckPath = options.healthCheckPath ?? null;
+        this.secureHealthCheckUrl = options.secureHealthCheckUrl ?? undefined;
+        this.secureVipAddress = options.secureVipAddress ?? undefined;
+        this.countryId = options.countryId ?? undefined;
+        this.isCoordinatingDiscoveryServer = options.isCoordinatingDiscoveryServer ?? false;
+        this.metadata = options.metadata ?? undefined;
 
         // Other Eureka parameters
-        this.heartbeatInterval = options.heartbeatInterval || undefined;
-        this.registryFetchInterval = options.registryFetchInterval || undefined;
-        this.maxRetries = options.maxRetries || 10;
-        this.requestRetryDelay = options.requestRetryDelay || 2000;
-        this.fetchRegistry = options.fetchRegistry || true;
-        this.filterUpInstances = options.filterUpInstances || false;
-        this.eurekaServicePath = options.eurekaServicePath || '/eureka/apps/';
-        this.useSsl = options.useSsl || false;
-        this.useDns = options.useDns || false;
-        this.preferSameZone = options.preferSameZone || false;
-        this.clusterRefreshInterval = options.clusterRefreshInterval || undefined;
-        this.fetchMetadata = options.fetchMetadata || true;
-        this.useLocalMetadata = options.useLocalMetadata || true;
-        this.preferIpAddress = options.preferIpAddress || true;
-        this.eurekaServiceUrls = options.eurekaServiceUrls || undefined;
+        this.heartbeatInterval = options.heartbeatInterval ?? undefined;
+        this.registryFetchInterval = options.registryFetchInterval ?? undefined;
+        this.maxRetries = options.maxRetries ?? 10;
+        this.requestRetryDelay = options.requestRetryDelay ?? 2000;
+        this.fetchRegistry = options.fetchRegistry ?? true;
+        this.filterUpInstances = options.filterUpInstances ?? false;
+        this.eurekaServicePath = options.eurekaServicePath ?? '/eureka/apps/';
+        this.useSsl = options.useSsl ?? false;
+        this.useDns = options.useDns ?? false;
+        this.preferSameZone = options.preferSameZone ?? false;
+        this.clusterRefreshInterval = options.clusterRefreshInterval ?? undefined;
+        this.fetchMetadata = options.fetchMetadata ?? true;
+        this.useLocalMetadata = options.useLocalMetadata ?? true;
+        this.preferIpAddress = options.preferIpAddress ?? true;
+        this.eurekaServiceUrls = options.eurekaServiceUrls ?? undefined;
     }
 
 
@@ -124,13 +124,13 @@ module.exports = class EurekaClient {
         client.logger.level(this.logLevel);
 
         client.start(error => {
-            console.log(error || `${this.appName} is registered with Eureka`);
+            console.log(error ?? `${this.appName} is registered with Eureka`);
         });
 
         function exitHandler(options, exitCode) {
             if (options.cleanup) {
             }
-            if (exitCode || exitCode === 0) console.log(exitCode);
+            if (exitCode ?? exitCode === 0) console.log(exitCode);
             if (options.exit) {
                 client.stop();
             }
