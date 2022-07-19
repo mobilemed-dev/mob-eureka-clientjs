@@ -24,7 +24,7 @@
     "feign-client.js"
   ],
   "dependencies": {
-    "eureka-js-client-aws": "^4.6.7",
+    "eureka-js-client-aws": "^4.6.8",
     "resilient": "^0.4.0",
     "resilient-eureka": "^1.0.2"
   }
