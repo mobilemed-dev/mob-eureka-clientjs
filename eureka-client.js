@@ -1,4 +1,4 @@
-const { Eureka } = require('eureka-js-client')
+const { Eureka } = require('eureka-js-client-aws')
 
 module.exports = class EurekaClient {
 
@@ -84,6 +84,7 @@ module.exports = class EurekaClient {
                 dataCenterInfo: this.useAws ? {
                     '@class': 'com.netflix.appinfo.AmazonInfo',
                     name: 'Amazon',
+                    type: 'Fargate'
                 } : {
                     '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
                     name: 'MyOwn',
