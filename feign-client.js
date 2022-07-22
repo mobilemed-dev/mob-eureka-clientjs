@@ -33,7 +33,7 @@ module.exports = class FeignClient {
             }
         });
         this.client.use(eurekaMiddleware({
-            serviceName: serviceName,
+            serviceName: serviceName.toUpperCase(),
         }));
     }
 }
