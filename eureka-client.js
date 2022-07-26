@@ -128,15 +128,6 @@ module.exports = class EurekaClient {
             console.log(error ?? `${this.appName} is registered with Eureka`);
         });
 
-        function exitHandler(options, exitCode) {
-            if (options.cleanup) {
-            }
-            if (exitCode ?? exitCode === 0) console.log(exitCode);
-            if (options.exit) {
-                client.stop();
-            }
-        }
-
         client.on('deregistered', () => {
             console.log('Eureka client deregistered.');
             process.exit();
@@ -146,6 +137,29 @@ module.exports = class EurekaClient {
             console.log(`Eureka started at ${this.eurekaHost}:${this.eurekaPort}`);
         })
 
+        process.stdin.resume();
+
+        function exitHandler(options, exitCode) {
+            if (options.cleanup) console.log('clean');
+            if (exitCode || exitCode === 0) console.log(exitCode);
+            if (options.exit) {
+                client.stop(function (error) {
+                    process.exit();
+                });
+            }
+        }
+
+        //do something when app is closing
+        process.on('exit', exitHandler.bind(null, { cleanup: true }));
+
+        //catches ctrl+c event
         process.on('SIGINT', exitHandler.bind(null, { exit: true }));
+
+        // catches "kill pid" (for example: nodemon restart)
+        process.on('SIGUSR1', exitHandler.bind(null, { exit: true }));
+        process.on('SIGUSR2', exitHandler.bind(null, { exit: true }));
+
+        //catches uncaught exceptions
+        process.on('uncaughtException', exitHandler.bind(null, { exit: true }));
     }
 }
