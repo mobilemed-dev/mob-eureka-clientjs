@@ -46,6 +46,8 @@ module.exports = class EurekaClient {
         this.countryId = options.countryId ?? undefined;
         this.isCoordinatingDiscoveryServer = options.isCoordinatingDiscoveryServer ?? false;
         this.metadata = options.metadata ?? undefined;
+        this.leaseInfoRenewalIntervalInSecs = options.leaseInfoRenewalIntervalInSecs ?? 10;
+        this.leaseInfoDurationInSecs = options.leaseInfoDurationInSecs ?? 10;
 
         // Other Eureka parameters
         this.heartbeatInterval = options.heartbeatInterval ?? undefined;
@@ -100,6 +102,10 @@ module.exports = class EurekaClient {
                 countryId: this.countryId,
                 isCoordinatingDiscoveryServer: this.isCoordinatingDiscoveryServer,
                 metadata: this.metadata,
+                leaseInfo: {
+                    renewalIntervalInSecs: this.leaseInfoRenewalIntervalInSecs,
+                    durationInSecs: this.leaseInfoDurationInSecs
+                }
             },
             //retry 10 time for 3 minute 20 seconds.
             eureka: {
